@@ -5,7 +5,7 @@ module Api
     class PetsController < ApplicationController
 
       def index
-        pets = Pet.all
+        pets = Pet.all.featured_alphabetical
         render json: pets, status: :ok
       end
 
