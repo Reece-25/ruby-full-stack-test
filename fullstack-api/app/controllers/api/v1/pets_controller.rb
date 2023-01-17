@@ -6,6 +6,7 @@ module Api
 
       def index
         pets = Pet.all.featured_alphabetical
+        pets = pets.where(species: params[:species]) if params[:species].present?
         render json: pets, status: :ok
       end
 
