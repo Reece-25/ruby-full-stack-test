@@ -9,6 +9,7 @@ class CreatePets < ActiveRecord::Migration[7.0]
       t.string :favorite_food
       t.string :favorite_toy
       t.boolean :featured
+      t.boolean :family_pet
 
       t.timestamps
     end
