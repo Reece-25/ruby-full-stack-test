@@ -5,7 +5,7 @@ const pushPet = pet => {
 }
 
 class Pet {
-  constructor(name, species, age, color, breed, favoriteFood, favoriteToy, featured = false) {
+  constructor(name, species, age, color, breed, favoriteFood, favoriteToy, featured = false, family_pet = false) {
     this.name = name;
     this.species = species;
     this.age = age;
@@ -14,11 +14,12 @@ class Pet {
     this.favoriteFood = favoriteFood;
     this.favoriteToy = favoriteToy;
     this.featured = featured;
+    this.family_pet = family_pet;
   }
 
   generateCard() {
     return `
-      <div class="pets__card">
+      <div class="pets__card ${this.featured ? 'featured' : ''} ${this.family_pet ? 'family' : ''} ">
         <h2 class="pets__card__title">${this.name}</h2>
         <p class="pets__card__info">Species: ${this.species}</p>
         <p class="pets__card__info">Age: ${this.age}</p>
@@ -53,11 +54,15 @@ const fetchPets = species => {
         pet.breed,
         pet.favorite_food,
         pet.favorite_toy,
-        pet.featured
+        pet.featured,
+        pet.family_pet
+
       ));
     });
   });
 }
+
+
 
 // Check params for "species" and fetch pets accordingly
 const params = new URLSearchParams(window.location.search);
